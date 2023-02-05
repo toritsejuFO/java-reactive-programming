@@ -15,6 +15,10 @@ public class Util {
         return (o) -> Log.logLine("RECEIVED: " + o);
     }
 
+    public static Consumer<Object> onNext(String message) {
+        return (o) -> Log.logLine("RECEIVED: " + o + " ::: " + message);
+    }
+
     public static Consumer<Throwable> onError() {
         return (err) -> Log.logLine("ERROR: " + err.getMessage());
     }
