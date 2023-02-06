@@ -3,6 +3,7 @@ package com.rp.util;
 import com.github.javafaker.Faker;
 import com.rp.log.Log;
 import org.apache.commons.lang3.time.StopWatch;
+import org.reactivestreams.Subscriber;
 
 import java.util.concurrent.TimeUnit;
 import java.util.function.Consumer;
@@ -58,5 +59,13 @@ public class Util {
             else
                 Log.logLine("TIME ELAPSED: " + (float)timeElapsed/1000 + "s");
         }
+    }
+
+    public static <T> Subscriber<T> subscriber() {
+        return new DefaultSubscriber<>();
+    }
+
+    public static <T> Subscriber<T> subscriber(String name) {
+        return new DefaultSubscriber<>(name);
     }
 }
