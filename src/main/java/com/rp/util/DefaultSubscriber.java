@@ -1,5 +1,6 @@
 package com.rp.util;
 
+import com.rp.log.Log;
 import org.reactivestreams.Subscriber;
 import org.reactivestreams.Subscription;
 
@@ -20,16 +21,16 @@ public class DefaultSubscriber<T> implements Subscriber<T> {
 
     @Override
     public void onNext(T o) {
-        System.out.println(name + "Received : " + o);
+        Log.logLine(name + "Received : " + o);
     }
 
     @Override
     public void onError(Throwable throwable) {
-        System.out.println(name + "ERROR : " + throwable.getMessage());
+        Log.logLine(name + "ERROR : " + throwable.getMessage());
     }
 
     @Override
     public void onComplete() {
-        System.out.println(name + "Completed");
+        Log.logLine(name + "Completed");
     }
 }
