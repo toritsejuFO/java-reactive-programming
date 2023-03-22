@@ -9,6 +9,7 @@ public class Lec12FlatMap {
     public static void main(String[] args) {
 
         UserService.getUsers()
+                .log()
                 .concatMap(user -> OrderService.getOrders(user.getUserId()))
                 .subscribe(Util.subscriber());
 

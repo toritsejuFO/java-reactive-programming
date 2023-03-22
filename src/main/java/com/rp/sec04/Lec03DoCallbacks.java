@@ -13,8 +13,8 @@ public class Lec03DoCallbacks {
             for (int i = 0; i < 5; i++) {
                 fluxSink.next(i);
             }
-             fluxSink.complete();
-//            fluxSink.error(new RuntimeException("oops"));
+//             fluxSink.complete();
+            fluxSink.error(new RuntimeException("oops"));
             System.out.println("--completed");
         })
                 .doOnComplete(() -> System.out.println("doOnComplete"))
@@ -27,7 +27,8 @@ public class Lec03DoCallbacks {
                 .doOnCancel(() -> Log.logLine("doOnCancel"))
                 .doFinally(signal -> Log.logLine("doFinally 1 : " + signal))
                 .doOnDiscard(Object.class, o -> Log.logLine("doOnDiscard : " + o))
-                .take(2)
+                .onErrorReturn(20)
+//                .take(2)
 //                .doFinally(signal -> Log.logLine()("doFinally 2 : " + signal))
                 .subscribe(Util.subscriber());
 
