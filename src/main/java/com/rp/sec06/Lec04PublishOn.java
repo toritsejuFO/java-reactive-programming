@@ -12,7 +12,7 @@ public class Lec04PublishOn {
         Flux<Object> flux = Flux.create(fluxSink -> {
                     logLine("create");
                     for (int i = 0; i < 4; i++) {
-                        fluxSink.next(1);
+                        fluxSink.next(i);
                     }
                     fluxSink.complete();
                 })
